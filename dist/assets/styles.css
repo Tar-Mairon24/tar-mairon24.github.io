@@ -1,0 +1,1337 @@
+/* ============================================================================
+   Portfolio Website - Design System CSS
+   ============================================================================
+   
+   Design System:
+   - Primary Color: Navy (#001f3f)
+   - Secondary Color: Light Gray (#f5f5f5)
+   - Accent Color: White (#ffffff)
+   - Headlines: Source Serif 4 (serif)
+   - Body Text: Source Sans 3 (sans-serif)
+   - Corners: Sharp (no border-radius)
+   - Spacing: 8px base unit
+   
+   ============================================================================ */
+
+/* ============================================================================
+   1. CSS VARIABLES & DESIGN TOKENS
+   ============================================================================ */
+
+:root {
+  /* Colors */
+  --color-primary: #001f3f;
+  --color-primary-dark: #000d1a;
+  --color-primary-light: #003d66;
+  --color-secondary: #f5f5f5;
+  --color-accent: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-light: #555555;
+  --color-border: #d0d0d0;
+  --color-focus: #0052cc;
+  --color-error: #d32f2f;
+  --color-success: #388e3c;
+  --color-warning: #f57c00;
+
+  /* Typography */
+  --font-serif: 'Source Serif 4', 'Georgia', serif;
+  --font-sans: 'Source Sans 3', 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Breakpoints */
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* ============================================================================
+   2. RESET & BASE STYLES
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-accent);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================================
+   3. TYPOGRAPHY
+   ============================================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+h4 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+h5 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+pre {
+  background-color: var(--color-secondary);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: var(--color-text);
+}
+
+/* ============================================================================
+   4. LISTS
+   ============================================================================ */
+
+ul, ol {
+  margin-bottom: var(--spacing-md);
+  margin-left: var(--spacing-xl);
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+}
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-bottom: 0;
+  margin-top: var(--spacing-sm);
+}
+
+dl {
+  margin-bottom: var(--spacing-md);
+}
+
+dt {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: var(--spacing-md);
+}
+
+dd {
+  margin-left: var(--spacing-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ============================================================================
+   5. LINKS & ANCHORS
+   ============================================================================ */
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-light);
+}
+
+a:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+a:active {
+  color: var(--color-primary-dark);
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-accent);
+  padding: var(--spacing-md);
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================================================
+   6. LAYOUT - HEADER
+   ============================================================================ */
+
+.page-header {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+
+.cover-header {
+  background-color: var(--color-primary);
+  padding: var(--spacing-3xl) var(--spacing-md);
+}
+
+.cover-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cover-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.cover-logo {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.school-logo {
+  max-width: 300px;
+  height: auto;
+  display: inline-block;
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.cover-content {
+  color: var(--color-accent);
+}
+
+.cover-title {
+  color: var(--color-accent);
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.cover-subtitle {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-secondary);
+}
+
+.cover-metadata {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.cover-metadata p {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+}
+
+.cover-metadata strong {
+  color: var(--color-accent);
+}
+
+/* ============================================================================
+   7. LAYOUT - NAVIGATION
+   ============================================================================ */
+
+nav {
+  background-color: var(--color-primary);
+  padding: var(--spacing-md) 0;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.nav-link {
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: background-color var(--transition-fast);
+  display: inline-block;
+}
+
+.nav-link:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-accent);
+}
+
+.nav-link:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: -2px;
+}
+
+.cover-navigation {
+  margin-top: var(--spacing-2xl);
+}
+
+/* ============================================================================
+   8. LAYOUT - MAIN CONTENT
+   ============================================================================ */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+.cover-main {
+  padding: var(--spacing-3xl) var(--spacing-md);
+}
+
+article {
+  margin-bottom: var(--spacing-3xl);
+}
+
+section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* ============================================================================
+   9. LAYOUT - FOOTER
+   ============================================================================ */
+
+footer {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  border-top: 1px solid var(--color-primary-dark);
+  margin-top: var(--spacing-3xl);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content p {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.footer-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================================
+   10. COMPONENTS - BUTTONS
+   ============================================================================ */
+
+button, .btn {
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+  border: 1px solid var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+button:focus, .btn:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+button:active, .btn:active {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+button:disabled, .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+}
+
+/* ============================================================================
+   11. COMPONENTS - CARDS
+   ============================================================================ */
+
+.card {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-header h3 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.card-body {
+  margin-bottom: var(--spacing-md);
+}
+
+.card-body:last-child {
+  margin-bottom: 0;
+}
+
+.card-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* ============================================================================
+   12. COMPONENTS - ATTACHMENTS
+   ============================================================================ */
+
+.attachment {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--color-secondary);
+}
+
+.attachment-icon {
+  font-size: var(--font-size-2xl);
+  flex-shrink: 0;
+}
+
+.attachment-info {
+  flex: 1;
+}
+
+.attachment-name {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.attachment-name:hover {
+  color: var(--color-primary-light);
+}
+
+.attachment-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.attachment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.attachment-list li {
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================================================
+   13. COMPONENTS - BREADCRUMBS
+   ============================================================================ */
+
+.breadcrumb {
+  list-style: none;
+  margin: 0 0 var(--spacing-lg) 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb li {
+  margin: 0;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '/';
+  margin-left: var(--spacing-sm);
+  color: var(--color-text-light);
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-primary-light);
+}
+
+/* ============================================================================
+   14. COMPONENTS - TABLES
+   ============================================================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-lg);
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+}
+
+th {
+  padding: var(--spacing-md);
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+}
+
+td {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--color-secondary);
+}
+
+tbody tr:hover {
+  background-color: #efefef;
+}
+
+/* ============================================================================
+   15. COMPONENTS - FORMS
+   ============================================================================ */
+
+form {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 31, 63, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ============================================================================
+   16. COMPONENTS - ALERTS & MESSAGES
+   ============================================================================ */
+
+.alert {
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid;
+}
+
+.alert-info {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+  color: #1565c0;
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  border-color: var(--color-success);
+  color: #2e7d32;
+}
+
+.alert-warning {
+  background-color: #fff3e0;
+  border-color: var(--color-warning);
+  color: #e65100;
+}
+
+.alert-error {
+  background-color: #ffebee;
+  border-color: var(--color-error);
+  color: #b71c1c;
+}
+
+/* ============================================================================
+   17. UTILITY CLASSES
+   ============================================================================ */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-muted {
+  color: var(--color-text-light);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+.mt-2xl { margin-top: var(--spacing-2xl); }
+.mt-3xl { margin-top: var(--spacing-3xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+.mb-2xl { margin-bottom: var(--spacing-2xl); }
+.mb-3xl { margin-bottom: var(--spacing-3xl); }
+
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+.p-2xl { padding: var(--spacing-2xl); }
+.p-3xl { padding: var(--spacing-3xl); }
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================================================
+   18. RESPONSIVE DESIGN - TABLET (768px and up)
+   ============================================================================ */
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: var(--font-size-5xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-3xl);
+  }
+
+  main {
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+  }
+
+  .page-header {
+    padding: var(--spacing-2xl) var(--spacing-2xl);
+  }
+
+  footer {
+    padding: var(--spacing-2xl) var(--spacing-2xl);
+  }
+
+  .nav-list {
+    gap: var(--spacing-lg);
+  }
+
+  .nav-link {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .cover-header {
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+  }
+
+  .cover-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+  }
+
+  .cover-image {
+    margin-bottom: 0;
+  }
+
+  .attachment {
+    flex-direction: row;
+  }
+
+  table {
+    font-size: var(--font-size-sm);
+  }
+
+  th, td {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ============================================================================
+   19. RESPONSIVE DESIGN - DESKTOP (1024px and up)
+   ============================================================================ */
+
+@media (min-width: 1024px) {
+  main {
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+  }
+
+  .container {
+    padding: 0 var(--spacing-2xl);
+  }
+
+  .nav-list {
+    gap: var(--spacing-xl);
+  }
+
+  .nav-link {
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+
+  .cover-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================================================
+   20. RESPONSIVE DESIGN - MOBILE (320px - 767px)
+   ============================================================================ */
+
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
+
+  main {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .page-header {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  footer {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .nav-link {
+    display: block;
+    padding: var(--spacing-md);
+    width: 100%;
+  }
+
+  .cover-header {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .cover-container {
+    display: block;
+  }
+
+  .cover-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .cover-subtitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .cover-metadata p {
+    font-size: var(--font-size-base);
+  }
+
+  .attachment {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .attachment-icon {
+    font-size: var(--font-size-xl);
+  }
+
+  table {
+    font-size: var(--font-size-xs);
+    overflow-x: auto;
+  }
+
+  th, td {
+    padding: var(--spacing-sm);
+  }
+
+  .breadcrumb {
+    font-size: var(--font-size-xs);
+  }
+
+  button, .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* ============================================================================
+   21. PRINT STYLES
+   ============================================================================ */
+
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  header, footer, nav {
+    display: none;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+
+/* ============================================================================
+   22. ACCESSIBILITY - HIGH CONTRAST MODE
+   ============================================================================ */
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-primary: #000000;
+    --color-text: #000000;
+    --color-border: #000000;
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  button, .btn {
+    border-width: 2px;
+  }
+}
+
+/* ============================================================================
+   23. ACCESSIBILITY - REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================================
+   24. DARK MODE SUPPORT
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode colors */
+    --color-primary: #001f3f;
+    --color-primary-dark: #000d1a;
+    --color-primary-light: #0052a3;
+    --color-accent: #0f0f0f;
+    --color-secondary: #1a1a1a;
+    --color-text: #e8e8e8;
+    --color-text-light: #b0b0b0;
+    --color-border: #333333;
+    --color-focus: #4da6ff;
+  }
+
+  body {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  /* Header and Navigation */
+  .page-header {
+    background-color: var(--color-primary);
+    border-bottom-color: var(--color-primary-dark);
+  }
+
+  nav {
+    background-color: var(--color-primary);
+  }
+
+  .nav-link {
+    color: #ffffff;
+  }
+
+  .nav-link:hover {
+    background-color: var(--color-primary-light);
+    color: #ffffff;
+  }
+
+  /* Cover Page */
+  .cover-header {
+    background-color: var(--color-primary);
+  }
+
+  .cover-title {
+    color: #ffffff;
+  }
+
+  .cover-subtitle {
+    color: #b0d4ff;
+  }
+
+  .cover-metadata strong {
+    color: #ffffff;
+  }
+
+  .cover-metadata p {
+    color: #e0e0e0;
+  }
+
+  /* Footer */
+  footer {
+    background-color: var(--color-primary);
+    border-top-color: var(--color-primary-dark);
+  }
+
+  /* Cards */
+  .card {
+    background-color: #1a1a1a;
+    border-color: var(--color-border);
+  }
+
+  .card-header {
+    border-bottom-color: var(--color-border);
+  }
+
+  .card-header h3 {
+    color: #64b5f6;
+  }
+
+  .card-footer {
+    border-top-color: var(--color-border);
+    color: var(--color-text-light);
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: #64b5f6;
+  }
+
+  strong, b {
+    color: #ffffff;
+  }
+
+  /* Links */
+  a {
+    color: #64b5f6;
+  }
+
+  a:hover {
+    color: #90caf9;
+  }
+
+  a:active {
+    color: #42a5f5;
+  }
+
+  /* Code */
+  code {
+    background-color: #1a1a1a;
+    color: #64b5f6;
+    border: 1px solid var(--color-border);
+  }
+
+  pre {
+    background-color: #1a1a1a;
+    border-color: var(--color-border);
+  }
+
+  pre code {
+    color: #e8e8e8;
+  }
+
+  /* Attachments */
+  .attachment {
+    background-color: #1a1a1a;
+    border-color: var(--color-border);
+  }
+
+  .attachment-name {
+    color: #64b5f6;
+  }
+
+  .attachment-name:hover {
+    color: #90caf9;
+  }
+
+  .attachment-meta {
+    color: var(--color-text-light);
+  }
+
+  /* Breadcrumbs */
+  .breadcrumb a {
+    color: #64b5f6;
+  }
+
+  .breadcrumb a:hover {
+    color: #90caf9;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    color: var(--color-text-light);
+  }
+
+  /* Tables */
+  thead {
+    background-color: var(--color-primary);
+  }
+
+  th {
+    border-color: var(--color-border);
+  }
+
+  td {
+    border-color: var(--color-border);
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #1a1a1a;
+  }
+
+  tbody tr:hover {
+    background-color: #252525;
+  }
+
+  /* Forms */
+  label {
+    color: #64b5f6;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    background-color: #1a1a1a;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus,
+  input[type="date"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #64b5f6;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.2);
+  }
+
+  /* Buttons */
+  button, .btn {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  button:hover, .btn:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+  }
+
+  button:active, .btn:active {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+  }
+
+  .btn-secondary {
+    background-color: #1a1a1a;
+    color: #64b5f6;
+    border-color: var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background-color: #252525;
+    border-color: #64b5f6;
+  }
+
+  /* Alerts */
+  .alert-info {
+    background-color: #0d1b2a;
+    border-color: #1976d2;
+    color: #64b5f6;
+  }
+
+  .alert-success {
+    background-color: #0d2818;
+    border-color: #388e3c;
+    color: #81c784;
+  }
+
+  .alert-warning {
+    background-color: #2a1810;
+    border-color: #f57c00;
+    color: #ffb74d;
+  }
+
+  .alert-error {
+    background-color: #2a0d0d;
+    border-color: #d32f2f;
+    color: #ef5350;
+  }
+
+  /* Utility text colors */
+  .text-muted {
+    color: var(--color-text-light);
+  }
+
+  .text-primary {
+    color: #64b5f6;
+  }
+
+  .text-accent {
+    color: #ffffff;
+  }
+
+  /* Small text */
+  small {
+    color: var(--color-text-light);
+  }
+
+  /* Definition lists */
+  dt {
+    color: #64b5f6;
+  }
+}
